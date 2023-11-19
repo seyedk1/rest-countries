@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="header-style">
-      <q-toolbar>
+      <q-toolbar class="header-title--dark-mode-parent">
         <q-toolbar-title class="header-title">
           Where in the world?
         </q-toolbar-title>

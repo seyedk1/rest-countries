@@ -1,8 +1,29 @@
+@import "/src/assets/sass/media";
+
 .header-style {
   background-color: white;
-  padding: 12px;
+  padding: 12px 3rem;
 
-  .header-title {
-    color: #333;
+  .header-title--dark-mode-parent {
+    .header-title {
+      color: #333;
+    }
+  }
+}
+
+/* responsive Main Layout */
+
+@include breakpoint(xsmall) {
+  .header-style {
+    padding: 12px 0 !important;
+  }
+}
+
+@media (max-width: 365px) {
+  .header-style {
+    .header-title--dark-mode-parent{
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
