@@ -1,12 +1,36 @@
 @import "/src/assets/sass/media";
 
-.header-style {
-  background-color: white;
-  padding: 12px 3rem;
+.body--dark {
+  .header-style {
+    background-color: $secondary;
+    padding: 12px 3rem;
 
-  .header-title--dark-mode-parent {
-    .header-title {
-      color: #333;
+    .header-title--dark-mode-parent {
+      .header-title {
+        color: $primary;
+        background-color: $secondary;
+      }
+
+      .dark-mode-button{
+        color: $primary !important;
+      }
+    }
+  }
+}
+
+.body--light {
+  .header-style {
+    background-color: $primary;
+    padding: 12px 3rem;
+
+    .header-title--dark-mode-parent {
+      .header-title {
+        color: $secondary;
+      }
+
+      .dark-mode-button{
+        color: $text !important;
+      }
     }
   }
 }
@@ -21,7 +45,7 @@
 
 @media (max-width: 365px) {
   .header-style {
-    .header-title--dark-mode-parent{
+    .header-title--dark-mode-parent {
       flex-direction: column;
       align-items: center;
     }

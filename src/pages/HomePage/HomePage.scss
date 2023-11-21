@@ -1,4 +1,155 @@
 @import "/src/assets/sass/media";
+
+.body--light {
+  #show-countries-parent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .home-page-header-parent {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+
+      .search-input-parent {
+        .searh-country-input {
+          background-color: $primary;
+          box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07);
+          width: 400px;
+          padding: 0 1rem;
+          border-radius: 5px;
+        }
+      }
+
+      .filter-parent {
+        display: flex;
+        // align-items: center;
+
+        .filter-button {
+          background-color: #fff;
+          color: $secondary;
+        }
+      }
+    }
+
+    .countries-card-parent {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex: 1;
+      padding: 1rem 5rem;
+
+      .country-card {
+        border: none;
+        box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07) !important;
+        margin: 10px;
+        cursor: pointer;
+
+        .each-card-item {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          font-size: 16px;
+
+          .country-name {
+            font-weight: bold;
+          }
+
+          .items-value {
+            font-size: 14px;
+            margin-top: 0 !important;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+
+    .loading-parent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.body--dark {
+  #show-countries-parent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: $accent;
+
+    .home-page-header-parent {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+
+      .search-input-parent {
+        .searh-country-input {
+          background-color: $secondary;
+          box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07);
+          width: 400px !important;
+          padding: 0 1rem;
+          border-radius: 5px;
+        }
+      }
+
+      .filter-parent {
+        display: flex;
+        align-items: center;
+
+        .filter-button {
+          background-color: $secondary;
+          color: $primary;
+        }
+      }
+    }
+
+    .countries-card-parent {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex: 1;
+      padding: 1rem 5rem;
+
+      .country-card {
+        background-color: $secondary;
+        border: none;
+        box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07) !important;
+        margin: 10px;
+        cursor: pointer;
+
+        .each-card-item {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          font-size: 16px;
+
+          .country-name {
+            font-weight: bold;
+          }
+
+          .items-value {
+            font-size: 14px;
+            margin-top: 0 !important;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+
+    .loading-parent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
 #show-countries-parent {
   display: flex;
   flex-direction: column;
@@ -12,7 +163,7 @@
 
     .search-input-parent {
       .searh-country-input {
-        background-color: white;
+        background-color: $primary;
         box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07);
         width: 400px;
         padding: 0 1rem;
@@ -24,8 +175,8 @@
       display: flex;
 
       .filter-button {
-        background-color: white;
-        color: #333;
+        background-color: $primary;
+        color: $secondary;
       }
     }
   }
@@ -41,6 +192,7 @@
       border: none;
       box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07) !important;
       margin: 10px;
+      cursor: pointer;
 
       .each-card-item {
         display: flex;
@@ -60,6 +212,12 @@
         }
       }
     }
+  }
+
+  .loading-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -82,7 +240,7 @@
   }
 }
 
-@media(max-width: 422px){
+@media (max-width: 422px) {
   .search-input-parent {
     .searh-country-input {
       width: 300px !important;

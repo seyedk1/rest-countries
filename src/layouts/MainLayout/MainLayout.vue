@@ -1,8 +1,15 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="header-style">
+    <q-header
+      elevated
+      class="header-style"
+      :class="{ 'q-dark': getDarkModeStatus }"
+    >
       <q-toolbar class="header-title--dark-mode-parent">
-        <q-toolbar-title class="header-title">
+        <q-toolbar-title
+          class="header-title"
+          :class="{ 'q-dark': getDarkModeStatus }"
+        >
           Where in the world?
         </q-toolbar-title>
 
@@ -10,11 +17,12 @@
           <q-btn
             flat
             align="between"
-            class="btn-fixed-width"
+            class="btn-fixed-width dark-mode-button"
             color="black"
             label="Dark Mode"
             no-caps
             icon="dark_mode"
+            @click="changeMode()"
           />
         </div>
       </q-toolbar>
