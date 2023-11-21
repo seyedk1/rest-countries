@@ -5,36 +5,94 @@ export const useCountryStore = defineStore("country", {
   state: () => ({
     countries: [],
     countryDetails: {},
+    offset: 0,
+    limit: 8,
+    visibleCountries: [],
+    region: [],
+    searchResults: [],
   }),
 
   getters: {
     get_countries: (state) => state.countries,
     get_country_details: (state) => state.countryDetails,
+    get_offset: (state) => state.offset,
+    get_limit: (state) => state.limit,
+    get_visible_countries: (state) => state.visibleCountries,
+    get_region: (state) => state.region,
+    get_search_results: (state) => state.searchResults,
   },
 
   actions: {
-    async get_countries_action() {
+    async get_countries_action(fields) {
       try {
-        /*
-        params: {
-            page: data.currentPage || 1,
-            size: data.size || 10,
-            service_provider_id: data.service_provider_id,
-            user_id: data.user_id,
-          },
-        */
+        const params = {};
+        // Only include the 'fields' parameter if it's provided
+        if (fields !== undefined) {
+          params.fields = fields;
+          console.log(params);
+        }
+
         const res = await axios({
-          url: "all",
+          url: `all`,
           method: "GET",
+          params,
         });
-        this.countries = res;
-        console.log("resss get all countries:", res);
+        this.countries = res.data;
 
         return res;
       } catch (err) {
         console.log("err: ", err);
         return err;
       }
+    },
+
+    async get_country_details_action(data) {
+      const params = {};
+      // Only include the 'fields' parameter if it's provided
+      if (data.fields !== undefined) params.fields = data.fields;
+
+      const res = await axios({
+        url: `name/${data.countryName}`,
+        method: "GET",
+        params,
+      });
+      console.log("ress: ", res);
+      this.countryDetails = res.data[0];
+      return res;
+    },
+
+    async get_countries_by_limit_action() {
+      if (this.offset < this.countries.length) {
+        const end = Math.min(this.offset + this.limit, this.countries.length);
+        this.visibleCountries = [
+          ...this.visibleCountries,
+          ...this.countries.slice(this.offset, end),
+        ];
+        this.offset += this.limit;
+      }
+
+      console.log({
+        offset: this.offset,
+        visibleCountries: this.visibleCountries,
+        limit: this.limit,
+      });
+    },
+
+    async filter_countries_by_region_action(region) {
+      // should empty all these states for fill again for region selected
+      this.countries = [];
+      this.visibleCountries = [];
+      this.offset = 0;
+      this.limit = 8;
+
+      const res = await axios({
+        url: `region/${region}`,
+        method: "GET",
+      });
+
+      this.countries = res.data;
+      console.log("countries filter by region: ", this.countries);
+      return res;
     },
   },
 });
