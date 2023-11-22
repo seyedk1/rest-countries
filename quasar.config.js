@@ -32,7 +32,7 @@ module.exports = configure(function (/* ctx */) {
       "themify",
       "line-awesome",
       "roboto-font-latin-ext", // this or either 'roboto-font', NEVER both!
-
+      // "Nunito_Sans",
       "roboto-font", // optional, you are not bound to it
       "material-icons", // optional, you are not bound to it
     ],
@@ -76,7 +76,7 @@ module.exports = configure(function (/* ctx */) {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
-      config: { loading: {} },
+      config: {},
 
       theme: {
         dark: false, // or false, depending on whether you want dark mode by default
@@ -110,7 +110,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [Loading],
+      plugins: [],
     },
 
     // animations: 'all', // --- includes all animations

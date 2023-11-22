@@ -45,27 +45,6 @@
         .info-parent {
           display: flex;
           flex: 1;
-
-          .ul-details-parent {
-            flex: 1;
-            list-style-type: none;
-            column-count: 2;
-
-            .each-info {
-              display: flex;
-              align-items: center;
-              font-size: 15px;
-              margin: 15px 5px;
-              flex-wrap: wrap;
-              margin-top: 0;
-
-              .info-value {
-                color: $accent;
-                margin-left: 5px;
-                font-size: 14px;
-              }
-            }
-          }
         }
       }
 
@@ -150,29 +129,6 @@
         .info-parent {
           display: flex;
           flex: 1;
-
-          .ul-details-parent {
-            flex: 1;
-            list-style-type: none;
-            column-count: 2;
-
-            .each-info {
-              display: flex;
-              align-items: center;
-              font-size: 15px;
-              margin: 15px 5px;
-              flex-wrap: wrap;
-              margin-top: 0;
-              
-
-              .info-value {
-                color: $primary;
-                margin-left: 5px;
-                font-size: 14px;
-                background-color: $accent;
-              }
-            }
-          }
         }
       }
 
@@ -212,16 +168,6 @@
 
 /* responsive details page */
 
-@media (max-width: 1200px) and (min-width: 992px) {
-  .country-info-parent {
-    .info-parent {
-      .ul-details-parent {
-        column-count: 1 !important;
-      }
-    }
-  }
-}
-
 @include breakpoint(medium) {
   .down-content-parent {
     flex-direction: column;
@@ -231,13 +177,6 @@
 
 @media (max-width: 684px) {
   .country-info-parent {
-    .info-parent {
-      .ul-details-parent {
-        column-count: 1 !important;
-        padding-left: 0;
-      }
-    }
-
     .border-countries-parent {
       flex-direction: column;
     }
@@ -266,12 +205,6 @@
         .country-name-parent {
           .country-name {
             font-size: 1.5rem;
-          }
-        }
-
-        .info-parent {
-          .each-info {
-            margin: 15px 0;
           }
         }
       }
