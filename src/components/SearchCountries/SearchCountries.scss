@@ -1,0 +1,43 @@
+@import "/src/assets/sass/media";
+
+.body--light {
+  #show-countries-parent {
+    .home-page-header-parent {
+      .search-input-parent {
+        .searh-country-input {
+          background-color: $primary;
+          box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07);
+          width: 400px;
+          padding: 0 1rem;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.body--dark {
+  #show-countries-parent {
+    .home-page-header-parent {
+      .search-input-parent {
+        .searh-country-input {
+          background-color: $secondary;
+          box-shadow: 5px 2px 19px 6px rgba(0, 0, 0, 0.07);
+          width: 400px !important;
+          padding: 0 1rem;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+/* responsive */
+
+@media (max-width: 422px) {
+  .search-input-parent {
+    .searh-country-input {
+      width: 300px !important;
+    }
+  }
+}

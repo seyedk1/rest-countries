@@ -1,16 +1,11 @@
-import { computed } from "vue";
-import { useThemeStore } from "stores/theme-store";
 import { useQuasar } from "quasar";
+import mixinTheme from "src/resources/composable/theme";
 
 export default {
   name: "MainLayout",
   setup() {
-    const theme = useThemeStore();
-
+    const { theme, getDarkModeStatus } = mixinTheme();
     const $q = useQuasar();
-
-    //dark mode use getters
-    const getDarkModeStatus = computed(() => theme.get_dark_mode_status);
 
     const { toggle_dark_mode_action } = theme;
 
@@ -19,9 +14,9 @@ export default {
       toggle_dark_mode_action($q);
     };
     return {
+      changeMode,
       theme,
       getDarkModeStatus,
-      changeMode,
     };
   },
 };

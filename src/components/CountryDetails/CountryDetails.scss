@@ -1,0 +1,105 @@
+@import "/src/assets/sass/media";
+
+.body--light {
+  #details-page-container {
+    //start down-content-parent
+    .down-content-parent {
+      .country-info-parent {
+        .info-parent {
+          .ul-details-parent {
+            flex: 1;
+            list-style-type: none;
+            column-count: 2;
+
+            .each-info {
+              display: flex;
+              align-items: center;
+              font-size: 15px;
+              margin: 15px 5px;
+              flex-wrap: wrap;
+              margin-top: 0;
+
+              .info-value {
+                color: $accent;
+                margin-left: 5px;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+    //end down-content-parent
+  }
+}
+
+.body--dark {
+  #details-page-container {
+    //start down-content-parent
+    .down-content-parent {
+      .country-info-parent {
+        .info-parent {
+          .ul-details-parent {
+            flex: 1;
+            list-style-type: none;
+            column-count: 2;
+
+            .each-info {
+              display: flex;
+              align-items: center;
+              font-size: 15px;
+              margin: 15px 5px;
+              flex-wrap: wrap;
+              margin-top: 0;
+
+              .info-value {
+                color: $primary;
+                margin-left: 5px;
+                font-size: 14px;
+                background-color: $accent;
+              }
+            }
+          }
+        }
+      }
+    }
+    //end down-content-parent
+  }
+}
+
+/* responsive Country Details Component */
+
+@media (max-width: 1200px) and (min-width: 992px) {
+  .country-info-parent {
+    .info-parent {
+      .ul-details-parent {
+        column-count: 1 !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 684px) {
+  .country-info-parent {
+    .info-parent {
+      .ul-details-parent {
+        column-count: 1 !important;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 434px) {
+  #details-page-container {
+    .down-content-parent {
+      .country-info-parent {
+        .info-parent {
+          .each-info {
+            margin: 15px 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "/src/assets/sass/media";
+
+.body--light {
+  #show-countries-parent {
+    .home-page-header-parent {
+      .filter-parent {
+        display: flex;
+        // align-items: center;
+
+        .filter-button {
+          background-color: #fff;
+          color: $secondary;
+        }
+      }
+    }
+  }
+}
+
+.body--dark {
+  #show-countries-parent {
+    .home-page-header-parent {
+      .filter-parent {
+        display: flex;
+        align-items: center;
+
+        .filter-button {
+          background-color: $secondary;
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Filter Region Component */
+
+@media (max-width: 700px) {
+  .home-page-header-parent {
+    .filter-parent {
+      margin-top: 20px;
+    }
+  }
+}
