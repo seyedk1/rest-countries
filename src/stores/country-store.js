@@ -47,52 +47,66 @@ export const useCountryStore = defineStore("country", {
     },
 
     async get_country_details_action(data) {
-      const params = {};
-      // Only include the 'fields' parameter if it's provided
-      if (data.fields !== undefined) params.fields = data.fields;
+      try {
+        const params = {};
+        // Only include the 'fields' parameter if it's provided
+        if (data.fields !== undefined) params.fields = data.fields;
+        else
+          params.fields =
+            "name,flags,region,population,borders,subregion,capital,tld,currencies,languages";
 
-      const res = await axios({
-        url: `name/${data.countryName}`,
-        method: "GET",
-        params,
-      });
-      console.log("ress: ", res);
-      this.countryDetails = res.data[0];
-      return res;
+        const res = await axios({
+          url: `name/${data.countryName}`,
+          method: "GET",
+          params,
+        });
+        this.countryDetails = res.data[0];
+        return res;
+      } catch (error) {
+        return error;
+      }
     },
 
     async get_countries_by_limit_action() {
-      if (this.offset < this.countries.length) {
-        const end = Math.min(this.offset + this.limit, this.countries.length);
-        this.visibleCountries = [
-          ...this.visibleCountries,
-          ...this.countries.slice(this.offset, end),
-        ];
-        this.offset += this.limit;
-      }
+      try {
+        if (this.offset < this.countries.length) {
+          const end = Math.min(this.offset + this.limit, this.countries.length);
+          this.visibleCountries = [
+            ...this.visibleCountries,
+            ...this.countries.slice(this.offset, end),
+          ];
+          this.offset += this.limit;
+        }
 
-      console.log({
-        offset: this.offset,
-        visibleCountries: this.visibleCountries,
-        limit: this.limit,
-      });
+        console.log({
+          offset: this.offset,
+          visibleCountries: this.visibleCountries,
+          limit: this.limit,
+        });
+      } catch (error) {
+        return error;
+      }
     },
 
     async filter_countries_by_region_action(region) {
-      // should empty all these states for fill again for region selected
-      this.countries = [];
-      this.visibleCountries = [];
-      this.offset = 0;
-      this.limit = 8;
+      try {
+        // should empty all these states for fill again for region selected
+        this.countries = [];
+        this.visibleCountries = [];
+        this.offset = 0;
+        this.limit = 8;
 
-      const res = await axios({
-        url: `region/${region}`,
-        method: "GET",
-      });
+        const res = await axios({
+          url: `region/${region}`,
+          method: "GET",
+        });
 
-      this.countries = res.data;
-      console.log("countries filter by region: ", this.countries);
-      return res;
+        this.countries = res.data;
+        console.log("countries filter by region: ", this.countries);
+        return res;
+      } catch (error) {
+        return error;
+      }
     },
   },
 });

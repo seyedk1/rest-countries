@@ -17,7 +17,9 @@ export default {
     const navigateToCountryDetails = (country) => {
       router.push({
         name: "details-page",
-        query: { countryName: country },
+        query: {
+          countryName: country,
+        },
       });
     };
 
