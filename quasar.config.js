@@ -10,7 +10,7 @@
 
 const { configure } = require("quasar/wrappers");
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
     // preFetch: true,
@@ -42,6 +42,12 @@ module.exports = configure(function (/* ctx */) {
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
+      },
+
+      extendViteConf(viteConf, { isClient, isServer }) {
+        if (ctx.mode.ssr) {
+          // do something with ViteConf
+        }
       },
 
       vueRouterMode: "history", // available values: 'hash', 'history'
@@ -110,7 +116,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ["Notify"],
     },
 
     // animations: 'all', // --- includes all animations
@@ -131,19 +137,48 @@ module.exports = configure(function (/* ctx */) {
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssr/configuring-ssr
     ssr: {
-      // ssrPwaHtmlFilename: 'offline.html', // do NOT use index.html as name!
+      ssrPwaHtmlFilename: "offline.html", // do NOT use index.html as name!
       // will mess up SSR
 
-      // extendSSRWebserverConf (esbuildConf) {},
-      // extendPackageJson (json) {},
+      extendSSRWebserverConf(esbuildConf) {},
+
+      // add/remove/change properties
+      // of production generated package.json
+      extendPackageJson(pkg) {
+        // directly change props of pkg;
+        // no need to return anything
+      },
 
       pwa: false,
 
-      // manualStoreHydration: true,
-      // manualPostHydrationTrigger: true,
+      /**
+       * Manually serialize the store state and provide it yourself
+       * as window.__INITIAL_STATE__ to the client-side (through a <script> tag)
+       * (Requires @quasar/app-vite v1.0.0-beta.14+)
+       */
+      manualStoreSerialization: false,
+
+      /**
+       * Manually inject the store state into ssrContext.state
+       * (Requires @quasar/app-vite v1.0.0-beta.14+)
+       */
+      manualStoreSsrContextInjection: false,
+
+      /**
+       * Manually handle the store hydration instead of letting Quasar CLI do it.
+       * For Pinia: store.state.value = window.__INITIAL_STATE__
+       * For Vuex: store.replaceState(window.__INITIAL_STATE__)
+       */
+      manualStoreHydration: false,
+
+      /**
+       * Manually call $q.onSSRHydrated() instead of letting Quasar CLI do it.
+       * This announces that client-side code should takeover.
+       */
+      manualPostHydrationTrigger: false,
 
       prodPort: 3000, // The default port that the production server should use
-      // (gets superseded if process.env.PORT is specified at runtime)
+      // (gets superseded if process∙env∙PORT is specified at runtime)
 
       middlewares: [
         "render", // keep this as last one

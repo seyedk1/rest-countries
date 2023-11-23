@@ -9,7 +9,7 @@
         label="Back"
         icon="arrow_back"
         no-caps
-        @click="$router.go(-1)"
+        @click="backBtn()"
       />
     </div>
     <!-- end up-content-parent -->
